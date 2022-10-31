@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+ 
+<script language="javascript">
+    function addPrice()
+    {
+        document.priceform.action="http://localhost:5000/addUnitDetails";
+        document.priceform.submit();
+    }
+    function viewPrice()
+    {
+        document.priceform.action="http://localhost:5000/success";
+        document.priceform.submit();
+    }
+    function editPrice(sno)
+    {
+        document.priceform.action="http://localhost:5000/editPrice?sno="+sno;
+        document.priceform.submit();
+    }
+    function deletePrice(sno)
+    {
+        document.priceform.action="http://localhost:5000/deletePrice?sno="+sno;
+        document.priceform.submit();
+    }   
+    
+    </script>
+    </script>
+</head>
+<body>
+<form name="priceform" action = "http://localhost:5000/addPrice" method = "post">  
+<center> <u><h1>UNIT PRICE DETAILS</h1></u></center>
+<div class="container">
+<table border = 1 >
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Unit Details</th>
+        <th>Item</th>
+        <th>Measuring Unit</th>
+        <th>Unit Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for i in result %}
+       <tr>
+          <td> {{ i[1] }} </td>
+          <td> {{ i[2] }} </td>
+          <td> {{ i[3] }} </td>
+          <td> {{ i[4] }} </td>
+          <td> {{ i[5] }} </td>
+          <td> {{ i[6] }} </td>
+          <td><input type="button" name="Edit" value="Edit" onClick="javascript:editPrice('{{ i[0] }}')"/>
+          <td><input type="button" name="Delete" value="Delete"  onClick="javascript:deletePrice('{{ i[0] }}')"/>
+        </tr>
+    {% endfor %}
+       
+    <tr><td colspan="8" align="center"> 
+      <input type="button" name="Add" value="Add Unit Price" onClick="javascript:addPrice();"/>&nbsp;&nbsp;&nbsp;
+      <input type="button" name="back" value="Go Back" onClick="javascript:viewPrice();"/>
+      </td>
+    </tr> 
+</table>
+</table> 
+     
+</form> 
+
+
+
+</body>
+</html>

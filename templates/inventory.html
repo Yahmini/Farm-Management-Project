@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+ 
+<script language="javascript">
+    function addInventory()
+    {
+        document.invform.action="http://localhost:5000/next";
+        document.invform.submit();
+    }
+    function editInventory(invName)
+    {
+        document.invform.action="http://localhost:5000/edit?invName="+invName;
+        document.invform.submit();
+    }
+    function deleteInventory(invName)
+    {
+        document.invform.action="http://localhost:5000/delete?invName="+invName;
+        document.invform.submit();
+    }
+    function viewTransaction()
+    {
+        
+        document.invform.action="http://localhost:5000/transaction";
+        document.invform.submit();
+    }
+    function profitInventory(invName)
+    {
+        document.invform.action="http://localhost:5000/profit?invName="+invName;
+        document.invform.submit();
+    }
+    function viewEvent()
+    {
+        document.invform.action="http://localhost:5000/event";
+        document.invform.submit();
+    }
+    function viewPrice()
+    {
+        document.invform.action="http://localhost:5000/viewPrice";
+        document.invform.submit();
+    }
+    function applogout()
+    {
+        alert("Logout");
+        document.invform.action="http://localhost:5000/logout";
+        document.invform.submit();
+    }
+    </script>
+    </script>
+</head>
+<body>
+<form name="invform" action = "http://localhost:5000/next" method = "post">  
+<center> <u><h1>INVENTORY</h1></u></center>
+<div class="container">
+<table border = 1 >
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Count</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Profit/Loss</th>
+
+    </tr>
+    {% for i in result %}
+       <tr>
+          <td> {{ i[0] }} </td>
+          <td> {{ i[1] }} </td>
+          <td> {{ i[2] }} </td>
+          <td><input type="button" name="Edit" value="Edit" onClick="javascript:editInventory('{{ i[0] }}')"/>
+          <td><input type="button" name="Delete" value="Delete"  onClick="javascript:deleteInventory('{{ i[0] }}')"/>
+          <td><input type="button" name="Profit" value="Profit/Loss"  onClick="javascript:profitInventory('{{ i[0] }}')"/> 
+       </tr>
+    {% endfor %}
+       
+    <tr><td colspan="6" align="center"> 
+      <input type="button" name="Add" value="Add Inventory" onClick="javascript:addInventory();"/>&nbsp;&nbsp;&nbsp;
+      <input type="button" name="transaction" value="View Transactions" onClick="javascript:viewTransaction();"/>&nbsp;&nbsp;&nbsp;
+      <input type="button" name="event" value="View Events" onClick="javascript:viewEvent();"/>&nbsp;&nbsp;&nbsp;
+      <input type="button" name="price" value="View Unit Details" onClick="javascript:viewPrice();"/>&nbsp;&nbsp;&nbsp;
+      <input type="button" name="logout" value="Logout" onClick="javascript:applogout();"/></td>
+    </tr> 
+</table>
+</table> 
+     
+</form> 
+
+
+
+</body>
+</html>

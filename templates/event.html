@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+      
+      
+<script language="javascript">
+    function addEvent()
+    {
+        document.eventform.action="http://localhost:5000/viewEvent";
+        document.eventform.submit();
+    }
+    function editEvent(sno)
+    {
+        document.eventform.action="http://localhost:5000/editevent?sno="+sno;
+        document.eventform.submit();
+    }
+    function deleteEvent(sno)
+    {
+        document.eventform.action="http://localhost:5000/deleteevent?sno="+sno;
+        document.eventform.submit();
+    }
+    
+    </script>
+</head>
+<body>
+<form name="eventform" action = "http://localhost:5000/viewevent" method = "post">  
+<center> <u><h1>Events </h1></u></center>
+<div class="container">
+<table border = 1 >
+    <tr>
+        <th>date</th>        
+        <th>Name</th>
+        <th>Event</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>delete</th>
+
+    </tr>
+    {% for i in result %}
+       <tr>
+          <td> {{ i[1] }} </td>
+          <td> {{ i[2] }} </td>
+          <td> {{ i[3] }} </td>
+          <td> {{ i[4] }} </td>
+          <td><input type="button" name="Edit" value="Edit" value="Edit" onClick="javascript:editEvent('{{ i[0] }}')"/>
+          <td><input type="button" name="Delete" value="Delete" value="Delete" onClick="javascript:deleteEvent('{{ i[0] }}')"/>
+       </tr>
+    {% endfor %}
+    <tr><td colspan="7" align="center"> <input type="button" name="Add" value="Add Event" onClick="javascript:addEvent();"/>
+        <input type="button" value="Go Back" onClick="javascript:history.back();"/></td></tr> 
+</table> 
+</form>
+
+
+
+</body>
+</html>

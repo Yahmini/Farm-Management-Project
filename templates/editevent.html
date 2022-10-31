@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+
+</head>
+<body>
+
+<center> <u><h1> Edit Event </h1></u></center>
+<form action = "http://localhost:5000/updateevent" method = "post">  
+<table border = 1>
+    <tr>
+      <td>Event Date:</td>
+      <td> <input type="text" name="event_date"  value="{{result[1]}}" />  </td></tr>
+    <tr>
+      <td>Type :</td>  
+      <td> <input type="text" name="event_name" value="{{result[2]}}" />  </td></tr>
+    <tr>
+      <td>Name :</td>  
+      <td> <input type="text" name="event_event" value="{{result[3]}}" />  </td></tr>
+    <tr>
+      <td>Income:</td>
+      <td> <input type="text" name="event_category" value="{{result[4]}}" /> 
+      <input type="hidden" name="sno"  value="{{result[0]}}" /></td></tr>
+    <tr>
+      <td colspan="2" align="center">
+      <input type="submit" value="Submit"/>
+      <input type="button" value="Go Back" onClick="javascript:history.back();"/>  </td></tr>
+       
+</table>
+</form>
+</body>
+</html>

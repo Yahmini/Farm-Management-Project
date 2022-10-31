@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+<script language="javascript">
+    function addUnitDetails()
+    {
+        alert("addUnitDetails()");
+        document.priceform.action="http://localhost:5000/addPrice";
+        document.priceform.submit();
+    }
+</script>
+</head>
+<body>
+
+<center> <u><h1> NEW UNIT DETAILS </h1></u></center>
+<form name="priceform" action = "http://localhost:5000/addPrice" method = "post">  
+<table border = 1>
+  
+       <tr>
+          <td>Name :</td>
+          <td> <input type="text" name="unitName" />  </td></tr>
+       <tr>
+          <td>Type :</td>  
+          <td> <input type="text" name="unitType"/>  </td></tr>
+       <tr>
+          <td>Unit Details :</td>
+          <td> <input type="text" name="unitDetails"/> </td></tr>
+       <tr>
+          <td>Item :</td>
+          <td> <input type="text" name="item"/> </td></tr>
+       <tr>
+          <td>Measuring Unit</td>
+          <td><select  name="measuring_unit" width="100%" name="custom-select">
+            <option value="Ltr">Ltr</option>
+            <option value="Kg">Kg</option>
+            <option value="count">count</option>  </td></tr>
+       <tr>
+          <td>Unit Price :</td>
+          <td> <input type="text" name="unitPrice"/> </td></tr>
+       <tr>
+          <td colspan="2" align="center">
+          <input type="button" name="addPrice" value="Add Unit Details" onClick="javascript:addUnitDetails();"/>
+          <input type="button" value="Go Back" onClick="javascript:history.back();"/>  </td></tr>
+    
+</table>
+</form>
+</body>
+</html>

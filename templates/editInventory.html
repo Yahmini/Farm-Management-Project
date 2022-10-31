@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+
+</head>
+<body>
+
+<center> <u><h1> EDIT INVENTORY</h1></u></center>
+<form action = "http://localhost:5000/updatetransaction" method = "post">  
+<table border = 1>
+  
+        <tr>
+          <td>Name :</td>
+          <td> <input type="text" name="invName" value="{{result[0]}}" readonly/>  </td></tr>
+        <tr>
+          <td>Type :</td>  
+          <td> <input type="text" name="invType" value="{{result[1]}}"/>  </td></tr>
+        <tr>
+          <td>Count :</td>
+          <td> <input type="text" name="invCount" value="{{result[2]}}"/> </td></tr>
+        <tr>
+          <td colspan="2" align="center"><input type="submit" value="Submit"/>
+          <input type="button" value="Go Back" onClick="javascript:history.back();"/>  </td></tr>
+    
+</table>
+</form>
+</body>
+</html>

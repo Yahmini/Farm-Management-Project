@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+  <script language="javascript">
+    function addTransaction()
+    {
+      document.transform.action="http://localhost:5000/addTransaction";
+      document.transform.submit();
+    }
+  </script>
+
+</head>
+<body>
+
+<center> <u><h1> NEW TRANSACTION </h1></u></center>
+<form name="transform" action = "http://localhost:5000/addTransaction" method = "post">  
+<table border = 1>
+  
+        <tr>
+          <td>Transaction Date:</td>
+          <td> <input type="text" name="trandate" value="{{today}}" readonly="true"/>  </td></tr>
+        <tr>
+          <td>Type :</td>  
+          <td> <input type="text" name="tranType"/>  </td></tr>
+        <tr>
+          <td>Name :</td>  
+          <td> <input type="text" name="tranName"/>  </td></tr>
+        <tr>
+          <td>Transaction Type:</td>
+          <td> <select  name="transtype" width="100%" name="custom-select">
+            <option value="Daily">Daily</option>
+            <option value="Monthly">Monthly</option>  </td></tr>
+        <tr>
+          <td>Item</td>
+          <td> <input type="text" name="item"/> </td></tr>
+        <tr>
+          <td>Measuring Unit</td>
+          <td><select  name="measuring_unit" width="100%" name="custom-select">
+                <option value="Ltr">Ltr</option>
+                <option value="Kg">Kg</option>
+                <option value="count">count</option>  </td></tr>
+        <tr>
+          <td>Units Sold:</td>
+          <td> <input type="text" name="unitssold"/>   </td></tr>
+        <tr>
+          <td>Expense:</td>
+          <td> <input type="text" name="tranexpense"/>   </td></tr>
+        <tr>
+          <td colspan="2" align="center">
+          <input type="button" value="Add Transaction" onClick="javascript:addTransaction();"/> 
+          <input type="button" value="Go Back" onClick="javascript:history.back();"/>  </td></tr>
+</table>
+</form>
+</body>
+</html>

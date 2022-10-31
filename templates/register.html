@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/invstyle.css') }}">
+<script language="javascript">
+    function register()
+    {
+        document.userfrm.action="http://localhost:5000/addUser";
+        document.userfrm.submit();
+    }
+</script>
+</head>
+<body>
+
+<center> <u><h1> User Registration </h1></u></center>
+<form name="userfrm" action = "http://localhost:5000/addUser" method = "post">  
+<table border = 1>
+  
+       <tr>
+           <td>Name :</td>
+          <td> <input type="text" name="userName" />  </td></tr>
+          <tr>
+            <td>Password :</td>  
+          <td> <input type="password" name="userPassword"/>  </td></tr>
+          <tr>
+            <td>Phone No :</td>  
+          <td> <input type="text" name="userPhone"/>  </td></tr>    
+       <tr>
+        <td colspan="2" align="center">
+            <input type="button" value="Register" onClick="javascript:register();"/>
+          <input type="button" value="Go Back" onClick="javascript:history.back();"/>  </td>
+       </tr>
+    
+</table>
+ 
+        
+</form>
